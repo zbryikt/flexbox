@@ -49,7 +49,6 @@ angular.module \main, <[ui.choices]>
         h: if $scope.randomHeight => (Math.random!*50 + 10) else 30
         p: Math.floor(Math.random! * 6) + 1
       } for i from 0 to ($scope.item-count.value)]
-      console.log $scope.nodes
     $scope.$watch 'randomHeight', $scope.init
     $scope.$watch 'randomWidth', $scope.init
     $scope.init!

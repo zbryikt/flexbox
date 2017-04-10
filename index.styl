@@ -1,0 +1,209 @@
+@import basic
+@import vars
+
+body
+  font-family: varela round
+
+.grayed
+  color: #777
+
+#land
+  background: url(img/dust.png) #ccc
+  color: #eee
+  width: 100%
+  height: 400px
+  text-align: center
+  position: relative
+  border-bottom: 20px solid #222
+  h1
+    text-shadow: 0 3px 10px rgba(255,0,0,0.6)
+    filter: url(#outline)
+    margin: 0 0 30px
+    font-family: varela round
+    color: #ff9
+  .grayed
+    color: #bbb
+  p
+    font-weight: 200
+    letter-spacing: 0.8px
+.ads
+  width: 320px
+  height: 50px
+  cursor: pointer
+  position: absolute
+  background: #222
+  color: #eee
+  font-size: 28px
+  text-align: center
+  z-index: index(order, 'ads')
+  border: 5px solid #22
+  border-radius: 3px
+  left: 50%
+  margin-top: -10px
+  transform: translateX(-50%) translateY(-50%)
+
+.ctrl
+  padding: 10px
+  border: 1px solid #ccc
+  border-radius: 3px
+  display: inline-block
+  margin: 5px 5px
+  & > label, & > small
+    display: block
+    line-height: 10px
+  & > small
+    font-size: 0.77em
+  .checkbox
+    margin-top: 5px
+    margin-bottom: 0
+  label > span
+    font-size: 0.98em
+.ctrl.no-border
+  border: none
+  padding: 0
+.sep
+  border-bottom: 1px solid #ccc
+  margin: 10px 0
+.sep.gap
+  margin: 20px 0
+.sep.light
+  margin: 8px 0
+  border-color: #eee
+.space
+  display: inline
+  margin-right: 5px
+.hairline
+  font-weight: 200
+.ctrls
+  width: 510px
+  flexbox()
+  flex-wrap(wrap)
+  align-content: flex-start
+  box-shadow: none
+  padding: 5px 5px
+  .ctrl
+    flex: 1 0 300px
+    min-width: 200px
+  .ctrl.lg
+    min-width: 400px
+#root
+  margin-top: 15px
+  z-index: index(order, 'base')
+  flexbox()
+  flex-wrap(wrap)
+  justify-content: space-between
+  .ctrls
+    width: 510px
+    min-width: 510px
+    flex(0 0 auto)
+  .detail
+    flex(1 0 200px)
+    margin: 20px 20px 10px 0
+    border-radius: 3px
+
+.container
+  border: 1px solid #ccc
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.3)
+  border-radius: 3px
+  width: 100%
+  height: 551px
+  background: #eee
+  overflow: scroll
+  .item
+    background: #ddd
+    border: 1px dotted #999
+    .ib
+      width: 100%
+      height: 100%
+
+.detail
+  textarea
+    width: 100%
+  .btn.vb
+    margin-bottom: 5px
+
+.container.with-phantom:after
+  display: block
+  content: " invisible node "
+  flex(999 999 auto)
+  background: none
+  box-shadow: none
+  border-radius: 0
+  border: none
+  border: 1px dashed #ccc
+  line-height: 40px
+  min-height: 40px
+  border-radius: 3px
+  vertical-align: middle
+  text-align: center
+  color: #ccc
+  no-selection()
+  cursor: default
+  margin: 5px
+
+.dialog
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: index(order, 'dialog')
+  .cover
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.5)
+    z-index: index(order, 'dialog-cover')
+  .panel
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 400px
+    bottom: 0
+    margin: auto
+    width: 600px
+    z-index: index(order, 'dialog-panel')
+    .panel-body
+      width: 100%
+      height: 343px
+      padding: 0
+    textarea
+      width: 100%
+      height: 100%
+      font-size: 1.2em
+      font-family: consolas, courier new, fixedsys
+      border: none
+      padding: 15px
+
+.preview-title
+  background: #222
+  color: #eee
+  padding: 5px
+  border-radius: 3px
+  margin-top: 5px
+
+.footer
+  padding: 20px 30px
+  color: #fff
+  background: #222
+
+.ionslider-simple
+  .irs
+    height: 30px
+  .irs-line, .irs-bar-edge, .irs-bar
+    top: 10px
+  .irs-slider
+    top: 7px
+
+.vb
+  vertical-align: bottom
+
+.faq
+  h3
+    border-left: 8px solid #eee
+    margin-left: -16px
+    padding-left: 8px
+    border-radius: 7px

@@ -1,0 +1,194 @@
+doctype html
+- var use = { cdn: false, og: false, favicon: true }
+- var lib = { jquery: true, d3js: false, angular: true, bootstrap: true, semantic: false, fontawesome: true, reactjs: false, revealjs: false }
+- var assets = "assets"
+- var url = "http://loading.io/flexbox"
+- var favicon = url + "/img/favicon.png"
+- var title = "Interactive CSS Flexbox Cheatsheet"
+- var og = {}
+- og.title = title
+- og.twitter = {type: "summary_large_image", site: "@zbryikt", creator: "@zbryikt"}
+- og.domain = "loading.io"
+- og.url = url
+- og.thumbnail = {width: 1200, height: 630, type: "image/jpg"}
+- og.thumbnail.url = url + "/img/thumbnail.jpg"
+- og.author = "loading.io"
+- og.section = "Taiwan"
+- og.keyword = "flexbox,align,justify,layout,grid"
+- og.description = "CSS flexbox cheatsheet and generator for guiding you toward a better grid and layout system, and is bootstrap compatible!"
+html(lang="en")
+  head(prefix="og: http://ogp.me/ns#")
+    meta(charset="utf-8")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Interactive Flexbox Cheatsheet
+    // libraries
+    include library.jade
+    // custom files
+    link(rel="stylesheet",type="text/css",href="index.css?")
+    link(rel="stylesheet",type="text/css",href="lib/ion-rangeslider/2.1.7/css/ion.rangeSlider.css")
+    link(rel="stylesheet",type="text/css",href="lib/ion-rangeslider/2.1.7/css/ion.rangeSlider.skinFlat.css")
+    link(rel="stylesheet",type="text/css",href="#{assets}/fontawesome/4.6.2/css/font-awesome.min.css")
+    link(href="https://fonts.googleapis.com/css?family=Varela+Round",rel="stylesheet")
+    script(type="text/javascript",src="lib/ui-choices/ui-choices.js")
+    script(type="text/javascript",src="lib/clipboardjs/clipboard.min.js")
+    script(type="text/javascript",src="index.js")
+    script(type="text/javascript",src="lib/ion-rangeslider/2.1.7/js/ion.rangeSlider.min.js")
+  body(ng-app="main",ng-controller="main")
+    svg(style="height:0;display:none")
+      filter#outline(x="-.5",y="-.5",width="2",height="2")
+        feMorphology(operator="dilate",radius="0.9",in="SourceGraphic",result="body")
+        feGaussianBlur(stdDeviation="2",result="blur")
+        feColorMatrix(type="matrix",values="0 0 0 0 0.01  0 0 0 0 0.01  0 0 0 0 0.01  0 0 0 40 -3",result="color")
+        feMerge
+          feMergeNode(in="color")
+          feMergeNode(in="SourceGraphic")
+    #land
+      .space
+      div(style="position:absolute;top:0;left:0;right:0;bottom:0;width:550px;height:150px;margin:auto;")
+        small.grayed interactive
+        h1 Flexbox Cheatsheet
+        p Layout with CSS Flexbox is powerful but complicated. So we made this: #[br] a quick playground for testing your css with flex layout tricks.
+    .ads(ng-click="scrollto('#root')")
+      span #[i.fa.fa-chevron-down]
+    .dialog(ng-if="modal.css.toggled")
+      .cover(ng-click="modal.css.toggle(false)")
+      .panel.panel-default
+        .panel-body
+          textarea#css-output(ng-model="output",data-clipboard-target="#css-output")
+        .panel-footer.text-right
+          .btn.btn-default(data-clipboard-target="#css-output") Copy
+          .space
+          .btn.btn-default(ng-click="modal.css.toggle(false)") Close
+    #root
+      .ctrls
+        .ctrl
+          label Main Direction #[small.grayed.hairline / flex-direction]
+          small.grayed direction of content flow
+          .sep.light
+
+          choices(ng-model="direction",data-type="array",btn-type="btn-sm btn btn-default")
+            choice(value="row",fallback,active) Row
+            choice(value="column") Column
+          .space
+          toggle.btn.btn-default.btn-sm(ng-model="directionReverse") Reversed
+        .ctrl
+          label Wrapping #[small.grayed.hairline / flex-wrap]
+          small.grayed controls how wrapping works 
+          .sep.light
+          choices(ng-model="wrapping",data-type="array",btn-type="btn-sm btn btn-default")
+            choice(value="nowrap") Nowrap
+            choice(value="wrap",fallback,active) Wrap
+            choice(value="wrap-reverse") Wrap Reverse
+        .ctrl.lg
+          label Main Align #[small.grayed.hairline / justify-content]
+          small.grayed align along the content flow ( main direction )
+          .sep.light
+          choices(ng-model="justify",data-type="array",btn-type="btn-sm btn btn-default")
+            choice(value="flex-start") Start
+            choice(value="flex-end") End
+            choice(value="center",active,fallback) Center
+            choice(value="space-between") Space Between
+            choice(value="space-around") Space Around
+
+        .ctrl.lg
+          label Cross Align #[small.grayed.hairline / align-items]
+          small.grayed vertical align within a line ( cross direction )
+          .sep.light
+          choices(ng-model="align",data-type="array",btn-type="btn-sm btn btn-default")
+            choice(value="auto") Auto
+            choice(value="flex-start") Start
+            choice(value="flex-end") End
+            choice(value="center",fallback,active) Center
+            choice(value="baseline") Baseline
+            choice(value="stretch") Stretch
+
+        .ctrl.lg
+          label Multi Align #[small.grayed.hairline / align-content]
+          small.grayed vertical align within container 
+          .sep.light
+          choices(ng-model="multialign",data-type="array",btn-type="btn btn-sm btn-default")
+            choice(value="flex-start") Start
+            choice(value="flex-end") End
+            choice(value="center",active,fallback) Center
+            choice(value="space-between") Space Between
+            choice(value="space-around") Space Around
+            choice(value="stretch") Stretch
+
+        .ctrl
+          label Flex Grow #[small.grayed.hairline / flex-grow]
+          small.grayed controls the proportion of size growing
+          .sep.light
+          input#flex-grow(type="text",ng-ion-slider,ng-value="flex.grow.value",config="flex.grow.config")
+
+        .ctrl
+          label Flex Shrink #[small.grayed.hairline / flex-shrink]
+          small.grayed controls the proportion of size shrinking
+          .sep.light
+          input#flex-shrink(type="text",ng-ion-slider,ng-value="flex.shrink.value",config="flex.shrink.config")
+
+        .ctrl
+          label Flex Basis #[small.grayed.hairline / flex-basis]
+          small.grayed set basis of size of flex items
+          .sep.light
+          input#flex-shrink(type="text",ng-ion-slider,ng-value="flex.basis.value",config="flex.basis.config")
+          .checkbox: label #[input(type="checkbox",ng-model="flex.basis.auto")] #[span auto]
+        .ctrl
+          label Item Margin #[small.grayed.hairline / margin]
+          small.grayed margin around items
+          .sep.light
+          input#margin(type="text",ng-ion-slider,ng-value="margin.value",config="margin.config")
+      .detail
+        .text-center
+          .ctrl.text-left.no-border.ionslider-simple.vb
+            label Item Count
+            input.form-control(type="input",ng-ion-slider,ng-value="itemCount.value",config="itemCount.config")
+          .ctrl.text-left.no-border.vb
+            label Content in Item
+            choices(ng-model="nodetype",data-type="array",btn-type="btn-sm btn btn-default")
+              choice(value="img",fallback,active) Image
+              choice(value="block") Block
+              choice(value="inline") Text
+          .space
+          .ctrl.text-left.no-border.vb
+            label Random Item Size
+            .btn-group
+              toggle.btn.btn-default.btn-sm(ng-model="randomHeight",ng-disabled="nodetype!='block'",active) Height
+              toggle.btn.btn-default.btn-sm(ng-model="randomWidth",ng-disabled="nodetype!='block'",active) Width      
+          .space
+          toggle.btn.btn-default.btn-sm.vb(ng-model="invisibleItem",active) Add :after placeholder
+          .space
+          .btn.btn-sm.btn-primary.vb(ng-click="modal.css.toggle(true)") Get CSS
+          .space
+
+        h4.preview-title: .text-center Preview
+        #preview
+          .container(ng-attr-style="{{css.container}}",ng-class="{'with-phantom':invisibleItem}")
+            img(ng-repeat="n in nodes",ng-attr-style="{{css.item}}",ng-if="nodetype[0]=='img'",ng-attr-src="img/{{n.p}}s.jpg")
+            .item(ng-repeat="n in nodes",ng-attr-style="{{css.item}}",ng-if="nodetype[0]!='img'")
+              span(ng-if="nodetype[0]=='inline'") {{tags[$index % tags.length]}}
+              .ib(ng-if="nodetype[0]=='block'",ng-attr-style="width:{{n.w}}px;height:{{n.h}}px")
+    .sep
+    .faq(style="max-width:1024px;width:96%;margin:30px auto 50px")
+      h3 So, its browser compatibility?
+      p Good news: every modern browser supports flexible box layout (flexbox) now. Yet unfortunately IE <= 9 don't support flexbox, and IE10/11's support are buggy. Check out #[a(href="http://caniuse.com/#feat=flexbox",target="_blank") Can I Use..?] for more detail about browser compatibility.
+
+      p: b tl;dr - You'll need a graceful degradation for IE <= 11. 
+      br
+      h3 Do you cover every flexbox attribute here?
+      p  #[code `order`], which controls the order of flex items, doesn't cover here since it will need to config with a by-each-item basis. #[code `flex-grow`], #[code `flex-shrink`] and #[code `flex-basis`] are similar yet we still provide the ability to config them with a single, identical value for every single item.
+      p #[code `align-self`] isn't covered too, which is used to overwrite #[code `align-items`] in specific item.
+      p: b tl;dr - We don't provide testing for attributes that works over single item basis.
+      br
+      h3 What is the :after placeholder?
+      p You can add a :after pseudo element in container with the #[code `Add :after placeholder`] button. It has the effect as #[code `flex: 999 999 auto`] which consumes all space in the last line of your content.
+      br
+      //-
+        h3 I just can't understand how flexbox works.
+        p You can #[a(href="") donate] for an upcoming interactive guide of how to use all these flexbox attributes. Thanks in advance!
+      br
+      h3 Why did you build this?
+      p I often use flexbox to layout things and I found it's frustrated to test all attributes again and again everytime I need one, so why not just having a nice, easy interface to bootstrap all these things up? Now I use this each time when I'm building a flexible layout, and I suggest you to bookmark this in your web design toolbox too.
+    .footer
+      .text-center by the way, why not make yourself a nice svg + css + gif ajax spinner?
+      .text-center checkout out #[a(href="http://loading.io",target="_blank") loading.io] now!
+      .text-center: a(href="http://loading.io",target="_blank"): img(src="img/animal.gif")

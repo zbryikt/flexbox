@@ -251,3 +251,8 @@ body {
   padding-left: 8px;
   border-radius: 7px;
 }
+#comment {
+  max-width: 1024px;
+  width: 90%;
+  margin: auto;
+}

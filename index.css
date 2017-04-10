@@ -14,11 +14,18 @@ body {
   border-bottom: 20px solid #222;
 }
 #land h1 {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  left: 0;
+  width: 100%;
   text-shadow: 0 3px 10px rgba(255,0,0,0.6);
-  filter: url("#outline");
   margin: 0 0 30px;
   font-family: varela round;
   color: #ff9;
+}
+#land h1:last-child {
+  filter: url("#outline");
 }
 #land .grayed {
   color: #bbb;

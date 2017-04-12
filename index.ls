@@ -121,6 +121,8 @@ angular.module \main, <[ui.choices]>
 
     resize = ->
       document.querySelector \#preview .style
-        ..width = "#{window.innerWidth - 540}px"
+        ..width = "#{window.innerWidth - 550}px"
+      document.querySelector '#root .detail' .style
+        ..width = "#{window.innerWidth - 550}px"
     window.addEventListener \resize, resize
     $interval (-> $scope.update! ), 500

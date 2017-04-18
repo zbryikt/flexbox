@@ -25,6 +25,7 @@ angular.module \main, <[ui.choices]>
 
   ..controller \main, <[$scope $interval]> ++ ($scope, $interval) ->
     $scope.nodes = []
+    $scope.track-event = (cat, act, label, value) -> ga \send, \event, cat, act, label, value
     $scope.scrollto = (sel = null,delay=0) ->
       <- setTimeout _, delay
       top = if sel => ( $(sel).offset!top - 60 ) else 0
@@ -54,7 +55,9 @@ angular.module \main, <[ui.choices]>
     $scope.init!
 
     $scope.modal = do
-      css: toggled: false, toggle: (v) -> @toggled = if v => v else !!!@toggled
+      css: toggled: false, toggle: (v) ->
+        @toggled = if v => v else !!!@toggled
+        if @toggled => $scope.track-event \flexbox, \get, \css
 
     clipboard = new Clipboard '*[data-clipboard-target]'
     clipboard.on \success, (e) ->

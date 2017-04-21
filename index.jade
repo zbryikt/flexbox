@@ -4,7 +4,7 @@ doctype html
 - var assets = "assets"
 - var url = "http://loading.io/flexbox"
 - var favicon = url + "/img/favicon.png"
-- var title = "Interactive CSS Flexbox Cheatsheet"
+- var title = "Interactive CSS Flexbox Generator"
 - var og = {}
 - og.title = title
 - og.twitter = {type: "summary_large_image", site: "@zbryikt", creator: "@zbryikt"}
@@ -20,7 +20,7 @@ html(lang="en")
   head(prefix="og: http://ogp.me/ns#")
     meta(charset="utf-8")
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Interactive Flexbox Cheatsheet
+    title Interactive Flexbox Generator
     // libraries
     include library.jade
     // custom files
@@ -46,8 +46,8 @@ html(lang="en")
       div(style="position:absolute;top:0;left:0;right:0;bottom:0;width:550px;height:150px;margin:auto;")
         small.grayed interactive
         div(style="position:relative;height:65px")
-          h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Cheatsheet
-          h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Cheatsheet
+          h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Generator
+          h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Generator
         p Layout with CSS Flexbox is powerful but complicated. So we made this: #[br] a quick playground for testing your css with flex layout tricks.
     .ads(ng-click="scrollto('#root')")
       span #[i.fa.fa-chevron-down]

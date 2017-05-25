@@ -266,3 +266,7 @@ body {
   width: 90%;
   margin: auto;
 }
+.-btn-pad-narrow .btn-sm {
+  padding-left: 4px;
+  padding-right: 4px;
+}

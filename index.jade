@@ -49,6 +49,10 @@ html(lang="en")
           h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Generator
           h1(style="position:absolute;top:0;text-align:center;left:0;width:100%") Flexbox Generator
         p Layout with CSS Flexbox is powerful but complicated. So we made this: #[br] a quick playground for testing your css with flex layout tricks.
+        .textn-center.has-tips
+          .hover-tip.top
+            span Howdy!
+          img(src="img/grid.svg",style="width:48px")
     .ads(ng-click="scrollto('#root')")
       span #[i.fa.fa-chevron-down]
     .dialog(ng-if="modal.css.toggled",ng-cloak)
@@ -183,12 +187,20 @@ html(lang="en")
       h3 What is the :after placeholder?
       p You can add a :after pseudo element in container with the #[code `Add :after placeholder`] button. It has the effect as #[code `flex: 999 999 auto`] which consumes all space in the last line of your content.
       br
-      //-
-        h3 I just can't understand how flexbox works.
-        p You can #[a(href="") donate] for an upcoming interactive guide of how to use all these flexbox attributes. Thanks in advance!
-      br
       h3 Why did you build this?
       p I often use flexbox to layout things and I found it's frustrating to test all attributes again and again everytime, so why not just having a nice, easy interface to bootstrap all these things up? And Now it's here, I use this every time building a flexible layout, and I suggest you to bookmark this in your web design toolbox too.
+      p we also provides micro animation solutions with thousands of icons in #[a(href="https://loading.io") loading.io ] for you to enrich your website and projects, don't forget to check it out!
+      .text-center(style="height:110px")
+        a.block(href="/icon/")
+          img(src="img/wifi.svg",style="height:100%")
+          img(src="img/soliloquy.svg",style="height:100%")
+          img(src="img/cluster.svg",style="height:100%")
+          img(src="img/canvas.svg",style="height:100%")
+          img(src="img/right.svg",style="height:80%")
+          br
+          .btn.btn-success.btn-lg make your own animation with thousands of icons in loading.io! &nbsp; #[i.fa.fa-arrow-right]
+      br
+
     #comment
       .sep.gap
       br

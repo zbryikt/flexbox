@@ -270,3 +270,88 @@ body {
   padding-left: 4px;
   padding-right: 4px;
 }
+.btn.has-tips,
+.has-tips {
+  position: relative;
+  overflow: visible;
+}
+.btn.has-tips .inner,
+.has-tips .inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.btn.has-tips .hover-tip,
+.has-tips .hover-tip {
+  display: block;
+  opacity: 0;
+  z-index: -1;
+  -ms-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+.hover-tip {
+  background: #000;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  min-width: 100px;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  z-index: -1;
+  font-size: 13px;
+}
+.hover-tip a {
+  color: #73baf7;
+}
+.hover-tip:before {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -7px;
+  background: #000;
+  display: block;
+  content: " ";
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.hover-tip.right:before {
+  top: 50%;
+  left: 2px;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+.hover-tip.bottom {
+  top: 100%;
+  margin-top: 14px;
+}
+.hover-tip.top {
+  top: auto;
+  bottom: 100%;
+}
+.hover-tip.top:before {
+  top: auto;
+  bottom: -5px;
+}
+.btn.has-tips:hover .hover-tip,
+.has-tips:hover .hover-tip {
+  display: block;
+  opacity: 1;
+  z-index: 10;
+}

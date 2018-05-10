@@ -252,7 +252,7 @@ update-file = ->
       try
         files = fs.readdir-sync \src/ls/ .map -> "src/ls/#it"
         files = files.filter -> (/\/\./.exec it) == null
-        result = [uglify.minify(lsc.compile(fs.read-file-sync(file)toString!,{bare:true}),{fromString:true}).code for file in files].join("")
+        result = [lsc.compile(fs.read-file-sync(file)toString!,{bare:true}) for file in files].join("")
         fs.write-file-sync "build.min.js", result
         console.log "[BUILD] #src --> build.min.js"
       catch
@@ -265,7 +265,7 @@ update-file = ->
         mkdir-recurse path.dirname(des)
         fs.write-file-sync(
           des,
-          uglify.minify(lsc.compile(fs.read-file-sync(src)toString!,{bare:true}),{fromString:true}).code
+          lsc.compile(fs.read-file-sync(src)toString!,{bare:true})
         )
         console.log "[BUILD] #src --> #des"
       catch

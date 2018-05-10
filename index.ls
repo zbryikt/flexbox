@@ -74,8 +74,8 @@ angular.module \main, <[ui.choices]>
     pseudocss = """
       .container:after {
         display: block;
-        content: " invisible node "
-        flex(999 999 auto)
+        content: " invisible node ";
+        flex: 999 999 auto;
       }
     """
     $scope.margin = do
